@@ -31,9 +31,8 @@ public class StockServiceImpl implements StockService {
                               .host("finnhub.io")
                               .pathSegment("api/v1")
                               .stockSymbol(symbol)
-                              .token("d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg")
+                              .token()
                               .getUrl();
-       // "https://finnhub.io/api/v1/quote?symbol=AAPL&token=d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg";
     
       ResponseEntity<StockDTO> stock = this.restTemplate.exchange(url, HttpMethod.GET, null, StockDTO.class);
         return stock.getBody();
@@ -45,9 +44,8 @@ public class StockServiceImpl implements StockService {
                               .host("finnhub.io")
                               .pathSegment("api/v1")
                               .companySymbol(symbol)
-                              .token("d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg")
+                              .token()
                               .getUrl();
-       // "https://finnhub.io/api/v1/stock/profile2?symbol=AAPL&token=d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg";
     
       ResponseEntity<CompanyDTO> company = this.restTemplate.exchange(url, HttpMethod.GET, null, CompanyDTO.class);
         return company.getBody();
@@ -60,21 +58,7 @@ public class StockServiceImpl implements StockService {
     stockAndProfile[1] = getCompanyProfile(symbol);
     return Arrays.asList(stockAndProfile);
   }
-
-  @Override
-  public List<StockDTO> getStock2() {
-    String [] url = new String[3];
-    url[0] = "https://finnhub.io/api/v1/quote?symbol=AAPL&token=d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg";
-    url[1] = "https://finnhub.io/api/v1/quote?symbol=ZBH&token=d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg";
-    url[2] = "https://finnhub.io/api/v1/quote?symbol=O&token=d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg";
-    StockDTO[] stockDTOs = new StockDTO[url.length];
-    for (int i = 0; i < url.length; i++) {
-      ResponseEntity<StockDTO> stock = this.restTemplate.exchange(url[i], HttpMethod.GET, null, StockDTO.class);
-        
-        stockDTOs[i] = stock.getBody();
-    } 
-    return Arrays.asList(stockDTOs);
-  }
+  
   @Override
   public List<StockDTO> getStocks() {
     Integer size = 503;
@@ -112,7 +96,7 @@ public class StockServiceImpl implements StockService {
                               .host("finnhub.io")
                               .pathSegment("api/v1")
                               .stockSymbol(values[index].trim())
-                              .token("d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg")
+                              .token()
                               .getUrl();
                       urls.add(url);
                       }

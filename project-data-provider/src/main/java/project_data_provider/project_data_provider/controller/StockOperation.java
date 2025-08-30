@@ -23,9 +23,6 @@ public interface StockOperation {
   @GetMapping(value = "/stockandprofile")
   List<Object> getStockAndProfile(@RequestParam String symbol)
     throws JsonProcessingException;
-
-  @GetMapping(value = "/stock2")
-  List<StockDTO> getStock2();
   
   @GetMapping(value ="/stocks")
   List<StockDTO> getStocks();

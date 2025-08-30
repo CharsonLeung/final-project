@@ -39,7 +39,8 @@ public class UriManager {
     this.uriComponentsBuilder.path("/stock/profile2?symbol=" + symbol);
     return this;
   }
-  public UriManager token(String token) {
+  public UriManager token() {
+    String token = ""; // **** CENSORED ****
     this.uriComponentsBuilder.path("&token=" + token);
     return this;
   }
@@ -47,12 +48,11 @@ public class UriManager {
     return this.uriComponentsBuilder.build().toUriString();
   }
   public static void main(String[] args) {
-      // "https://finnhub.io/api/v1/quote?symbol=AAPL&token=d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg"
     String url = UriManager.newInstance()
                   .host("finnhub.io")
                   .pathSegment("api/v1")
                   .stockSymbol("AAPL")
-                  .token("d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg")
+                  .token()
                   .getUrl();
   System.out.println(url);  
   }

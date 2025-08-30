@@ -9,6 +9,5 @@ public interface StockService {
   StockDTO getStock(String symbol) throws JsonProcessingException;
   CompanyDTO getCompanyProfile(String symbol) throws JsonProcessingException;
   List<Object> getStockAndProfile(String symbol) throws JsonProcessingException;
-  List<StockDTO> getStock2();
   List<StockDTO> getStocks();
 }

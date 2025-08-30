@@ -38,10 +38,6 @@ public class StockController implements StockOperation {
   }
 
   @Override
-  public List<StockDTO> getStock2() {
-    return stockService.getStock2();
-  }
-  @Override
   public List<StockDTO> getStocks() {
     return stockService.getStocks();
   }

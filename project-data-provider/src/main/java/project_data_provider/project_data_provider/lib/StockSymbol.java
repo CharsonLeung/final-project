@@ -46,7 +46,7 @@ public class StockSymbol {
                               .host("finnhub.io")
                               .pathSegment("api/v1")
                               .stockSymbol(values[index].trim())
-                              .token("d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg")
+                              .token()
                               .getUrl();
                         urls.add(url);
                                
