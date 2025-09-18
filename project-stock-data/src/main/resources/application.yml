@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driverClassName: "org.postgresql.Driver"
+    url: "jdbc:postgres-container:5432/bc2504p"
+    username: "postgres"
+    password: "Admin1234$"
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: update
+  data:
+    redis:
+      host: "redis-container"
+      post: 6379
+      database: 0
+      timtout: 2000
