@@ -1,5 +1,6 @@
 package project_stock_data.project_stock_data.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,8 @@ import lombok.NoArgsConstructor;
 public class StockEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
+  @Column(nullable = false, name = "symbol")
   private String symbol;
 
   

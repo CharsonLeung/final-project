@@ -1,5 +1,6 @@
 package project_stock_data.project_stock_data.entity;
 
+import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +23,8 @@ import lombok.NoArgsConstructor;
 public class StockProfilesEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long profileId;
+  @Column(nullable = false)
   private String ticker;
   @Column(nullable = false)
   private String name;
@@ -47,8 +50,10 @@ public class StockProfilesEntity {
   private Double marketCapitalization;
   @Column(nullable = false)
   private Double shareOutstanding;
+  @Column(nullable = false)
+  private LocalDate updateDate;
   
   @OneToOne
-  @JoinColumn(name = "stock_symbol", nullable = false)
+  @JoinColumn(name = "stock_id", nullable = false)
   private StockEntity stockEntity;
 }

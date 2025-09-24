@@ -22,12 +22,14 @@ import lombok.NoArgsConstructor;
 public class StockOhlcEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long stockOhlcId;
+  @Column(nullable = false, name = "symbol")
   private String symbol;
-  @Column(nullable = false, name = "current_price")
+  @Column(nullable = true, name = "current_price")
   private Float c;
-  @Column(nullable = false, name = "change")
+  @Column(nullable = true, name = "change")
   private Float d;
-  @Column(nullable = false, name = "percent_change")
+  @Column(nullable = true, name = "percent_change")
   private Float dp;
   @Column(nullable = false, name = "high_price_of_the_day")
   private Float h;
@@ -37,13 +39,15 @@ public class StockOhlcEntity {
   private Float o;
   @Column(nullable = false, name = "previous_close_price")
   private Float pc;
-  @Column(nullable = false, name = "unix")
-  private Integer t;
   @Column(nullable = false, name = "volume")
   private Integer v;
+  @Column(nullable = false, name = "timestamp")
+  private Integer t;
+  @Column(nullable = true, name = "date_time")
+  private String dt;
 
   @ManyToOne
-  @JoinColumn(name = "stock_symbol", nullable = false)
+  @JoinColumn(name = "stock_id", nullable = false)
   private StockEntity stockEntity;
 
   
