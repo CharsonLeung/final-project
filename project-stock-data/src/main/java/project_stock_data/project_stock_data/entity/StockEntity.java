@@ -24,5 +24,5 @@ public class StockEntity {
   @Column(nullable = false, name = "symbol")
   private String symbol;
 
-  
-}
+  }
+

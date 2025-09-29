@@ -10,7 +10,11 @@ import sys
 import subprocess
 
 # 0 = Mon, 1 = Tue, 2 = Wed, 3 = Thu, 4 = Fri, 5 = Sat, 6 = Sun
+print("=======================================")
+print("=========Load OHLCV DATA DAILY=========")
+print("=======================================")
 if date.today().weekday() >=1 and date.today().weekday() < 6: # Monday -> Last Friday
+  print("Initializing...")
   desired_date = date.today() - timedelta(days=1)
   desired_date_time = datetime(desired_date.year, desired_date.month, desired_date.day, 21, 30, 0)
   
@@ -32,7 +36,7 @@ if date.today().weekday() >=1 and date.today().weekday() < 6: # Monday -> Last F
 
 
   period2 = round(desired_date_time.timestamp())
-  sql_timestamp = pd.read_sql("select max(timestamp) from stock_ohlc_data", con=stock_engine)
+  sql_timestamp = pd.read_sql("select max(timestamp) from stock_ohlc_data;", con=stock_engine)
   period1 = pd.DataFrame(sql_timestamp).iloc[0].iloc[0]
   df_ohlcv = []
   e = ""
@@ -126,4 +130,3 @@ if date.today().weekday() >=1 and date.today().weekday() < 6: # Monday -> Last F
     # print(f"Error {e} occurred.")
 else:
   sys.exit("There should be no updates today.")
-

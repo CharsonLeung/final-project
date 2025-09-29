@@ -23,12 +23,14 @@ public class StockController implements StockOperation {
   @Override
   public StockDTO getStock(String symbol) throws JsonProcessingException {
     System.out.println("Symbol = " + symbol);
+    System.out.println(stockService.getStock(symbol));
     return stockService.getStock(symbol);
   }
 
   @Override
   public CompanyDTO getCompanyProfile(String symbol) throws JsonProcessingException {
     System.out.println("Symbol = " + symbol);
+    System.out.println(stockService.getCompanyProfile(symbol));
     return stockService.getCompanyProfile(symbol);
   }
 

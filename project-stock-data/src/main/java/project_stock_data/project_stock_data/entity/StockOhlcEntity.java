@@ -1,7 +1,9 @@
 package project_stock_data.project_stock_data.entity;
 
+import java.io.Serializable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,18 +21,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 @Builder
-public class StockOhlcEntity {
+public class StockOhlcEntity implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long stockOhlcId;
   @Column(nullable = false, name = "symbol")
   private String symbol;
-  @Column(nullable = true, name = "current_price")
-  private Float c;
-  @Column(nullable = true, name = "change")
-  private Float d;
-  @Column(nullable = true, name = "percent_change")
-  private Float dp;
   @Column(nullable = false, name = "high_price_of_the_day")
   private Float h;
   @Column(nullable = false, name = "low_price_of_the_day")
@@ -46,8 +42,8 @@ public class StockOhlcEntity {
   @Column(nullable = true, name = "date_time")
   private String dt;
 
-  @ManyToOne
-  @JoinColumn(name = "stock_id", nullable = false)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "stock_id", referencedColumnName = "id", nullable = false)
   private StockEntity stockEntity;
 
   

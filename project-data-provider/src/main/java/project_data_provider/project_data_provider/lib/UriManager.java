@@ -40,7 +40,7 @@ public class UriManager {
     return this;
   }
   public UriManager token() {
-    String token = ""; // **** CENSORED ****
+    String token = "d2hhihpr01qon4ec95j0d2hhihpr01qon4ec95jg"; // **** CENSORED ****
     this.uriComponentsBuilder.path("&token=" + token);
     return this;
   }
@@ -51,7 +51,7 @@ public class UriManager {
     String url = UriManager.newInstance()
                   .host("finnhub.io")
                   .pathSegment("api/v1")
-                  .stockSymbol("AAPL")
+                  .companySymbol("AAPL")
                   .token()
                   .getUrl();
   System.out.println(url);  
